@@ -7,11 +7,12 @@ import { Main } from './components/main';
 import { Nav } from './components/nav';
 
 function App() {
+  const appName = Data().name;
   return (
     <div className="App">
       <Header />
       <Nav />
-      <Main name={Data().name} />
+      <Main name={appName} />
       <Footer />
     </div>
   );
