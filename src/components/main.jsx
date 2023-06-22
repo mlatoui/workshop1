@@ -1,9 +1,9 @@
 import { Hello } from './hello';
 
-export const Main = ({ name }) => {
+export const Main = (props) => {
   return (
     <main>
-      <Hello name={name} />
+      <Hello name={props.name} />
     </main>
   );
 };

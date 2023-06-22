@@ -1,3 +1,3 @@
-export const Hello = ({ name }) => {
-  return <p>Hello {name}</p>;
+export const Hello = (props) => {
+  return <p>Hello {props.name}</p>;
 };
