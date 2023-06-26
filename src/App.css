@@ -66,3 +66,58 @@ body {
   align-items: center;
   justify-content: center;
 }
+
+.business-cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.business-card img {
+  width: 50%;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.business-card h2 {
+  margin-top: 10px;
+  font-size: 18px;
+}
+
+.business-card p {
+  margin: 5px 0;
+}
+
+.business-card {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: #f1f1f1;
+  padding: 20px;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  height: 300px;
+  width: 700px;
+  margin-bottom: 20px;
+}
+
+.image-container {
+  flex-shrink: 0;
+  margin-right: 20px;
+}
+
+.info-container {
+  flex-grow: 1;
+}
+
+.info-container h2 {
+  margin-top: 0;
+}
+
+.info-container p {
+  margin: 5px 0;
+}
+
+.info-container button {
+  margin-top: 10px;
+}
