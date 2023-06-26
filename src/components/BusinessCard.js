@@ -1,12 +1,9 @@
 import React from 'react';
 
 class BusinessCard extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isVisible: true,
-    };
-  }
+  state = {
+    isVisible: true,
+  };
 
   render() {
     const { name, email, tel, photo } = this.props;
