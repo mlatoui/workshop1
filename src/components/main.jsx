@@ -13,28 +13,24 @@ export const Main = (props) => {
           photo="https://banffventureforum.com/wp-content/uploads/2019/08/no-photo-icon-22.png"
         />
         <BusinessCard
-          name="Person Two"
           email="person.two@mcgill.com"
           tel="438-000-0000"
           photo="https://banffventureforum.com/wp-content/uploads/2019/08/no-photo-icon-22.png"
         />
         <BusinessCard
           name="Person Three"
-          email="person.three@mcgill.com"
           tel="438-000-0000"
           photo="https://banffventureforum.com/wp-content/uploads/2019/08/no-photo-icon-22.png"
         />
         <BusinessCard
           name="Person Four"
           email="person.four@mcgill.com"
-          tel="438-000-0000"
           photo="https://banffventureforum.com/wp-content/uploads/2019/08/no-photo-icon-22.png"
         />
         <BusinessCard
           name="Person Five"
           email="person.five@mcgill.com"
           tel="438-000-0000"
-          photo="https://banffventureforum.com/wp-content/uploads/2019/08/no-photo-icon-22.png"
         />
         <BusinessCard
           name="Person Six"

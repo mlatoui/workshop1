@@ -6,7 +6,13 @@ class BusinessCard extends React.Component {
   };
 
   render() {
-    const { name, email, tel, photo } = this.props;
+    const {
+      name = 'Not Specified',
+      email = 'Not Specified',
+      tel = 'Not Specified',
+      photo = '/default-no-photo.jpg',
+    } = this.props;
+
     const { isVisible } = this.state;
 
     return (
