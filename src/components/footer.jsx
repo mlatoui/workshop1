@@ -1,3 +1,3 @@
 export const Footer = ({ name }) => {
-  return <footer class="footer">footer</footer>;
+  return <footer className="footer">footer</footer>;
 };
