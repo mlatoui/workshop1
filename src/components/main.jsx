@@ -6,21 +6,22 @@ export const Main = (props) => {
   return (
     <main className="main">
       <Hello name={name} />
-      <div className="business-cards-container">
+      <ul className="business-cards-container">
         {profiles.length === 0 ? (
           <p>No data</p>
         ) : (
           profiles.map((p, i) => (
-            <BusinessCard
-              key={i}
-              name={p.name}
-              email={p.email}
-              tel={p.tel}
-              photo={p.photo}
-            />
+            <li key={i}>
+              <BusinessCard
+                name={p.name}
+                email={p.email}
+                tel={p.tel}
+                photo={p.photo}
+              />
+            </li>
           ))
         )}
-      </div>
+      </ul>
     </main>
   );
 };
