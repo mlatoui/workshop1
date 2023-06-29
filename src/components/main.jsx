@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Hello } from './hello';
 import { BusinessCard } from './BusinessCard';
 import BusinessCardDetailed from './BusinessCardDetailed';
+import isEqual from 'lodash/isEqual';
 
 export const Main = ({ name, profiles }) => {
   const [fetchedProfiles, setFetchedProfiles] = useState(
@@ -10,6 +11,7 @@ export const Main = ({ name, profiles }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [sortOrder, setSortOrder] = useState('ascending');
   const [selectedProfile, setSelectedProfile] = useState(null);
+  const [showFavorites, setShowFavorites] = useState(false);
 
   const filteredProfiles = fetchedProfiles.filter(
     (profile) =>
@@ -36,10 +38,12 @@ export const Main = ({ name, profiles }) => {
   const handleCardClick = (profile) => {
     setSelectedProfile(profile);
     const updatedProfiles = fetchedProfiles.map((p) =>
-      p.id === profile.id ? { ...p, favorite: true } : p
+      isEqual(p, profile) ? { ...p, favorite: !p.favorite } : p
     );
     setFetchedProfiles(updatedProfiles);
-    console.log(fetchedProfiles);
+  };
+  const handleShowFavorites = () => {
+    setShowFavorites(!showFavorites);
   };
 
   return (
@@ -57,6 +61,12 @@ export const Main = ({ name, profiles }) => {
           <option value="ascending">Ascending</option>
           <option value="descending">Descending</option>
         </select>
+        <input
+          type="checkbox"
+          checked={showFavorites}
+          onChange={handleShowFavorites}
+        />
+        Show Favorites only
       </div>
       <ul className="business-cards-container">
         {sortedProfiles.length === 0 ? (
@@ -64,12 +74,15 @@ export const Main = ({ name, profiles }) => {
         ) : (
           sortedProfiles.map((profile, index) => (
             <li key={index} onClick={() => handleCardClick(profile)}>
-              <BusinessCard
-                name={profile.name}
-                email={profile.email}
-                tel={profile.tel}
-                photo={profile.photo}
-              />
+              {((profile.favorite === true && showFavorites) ||
+                !showFavorites) && (
+                <BusinessCard
+                  name={profile.name}
+                  email={profile.email}
+                  tel={profile.tel}
+                  photo={profile.photo}
+                />
+              )}
             </li>
           ))
         )}
