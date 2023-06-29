@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { Hello } from './hello';
 import { BusinessCard } from './BusinessCard';
+import BusinessCardDetailed from './BusinessCardDetailed';
 
 export const Main = ({ name, profiles }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [sortOrder, setSortOrder] = useState('ascending');
+  const [selectedProfile, setSelectedProfile] = useState(null);
 
   const filteredProfiles = profiles.filter(
     (profile) =>
@@ -13,11 +15,11 @@ export const Main = ({ name, profiles }) => {
   );
 
   const sortedProfiles = filteredProfiles.sort((a, b) => {
-    const nameA = a.name.toLowerCase();
-    const nameB = b.name.toLowerCase();
+    const nameAsc = a.name.toLowerCase();
+    const nameDesc = b.name.toLowerCase();
     return sortOrder === 'ascending'
-      ? nameA.localeCompare(nameB)
-      : nameB.localeCompare(nameA);
+      ? nameAsc.localeCompare(nameDesc)
+      : nameDesc.localeCompare(nameAsc);
   });
 
   const handleSearchChange = (event) => {
@@ -26,6 +28,10 @@ export const Main = ({ name, profiles }) => {
 
   const handleSortChange = (event) => {
     setSortOrder(event.target.value);
+  };
+
+  const handleCardClick = (profile) => {
+    setSelectedProfile(profile);
   };
 
   return (
@@ -49,7 +55,7 @@ export const Main = ({ name, profiles }) => {
           <p>No matching profiles</p>
         ) : (
           sortedProfiles.map((profile, index) => (
-            <li key={index}>
+            <li key={index} onClick={() => handleCardClick(profile)}>
               <BusinessCard
                 name={profile.name}
                 email={profile.email}
@@ -60,6 +66,8 @@ export const Main = ({ name, profiles }) => {
           ))
         )}
       </ul>
+      {selectedProfile && <BusinessCardDetailed {...selectedProfile} />}{' '}
+      {/* displaying it here for now */}
     </main>
   );
 };

@@ -20,8 +20,8 @@ export const BusinessCard = ({
         </div>
         <div className="info-container">
           <h2>{name}</h2>
-          <p>Email: {email}</p>
-          <p>Tel: {tel}</p>
+          {/* <p>Email: {email}</p>
+          <p>Tel: {tel}</p> */}
           <button onClick={handleRemoveClick}>Remove</button>
         </div>
       </div>
