@@ -4,11 +4,14 @@ import { BusinessCard } from './BusinessCard';
 import BusinessCardDetailed from './BusinessCardDetailed';
 
 export const Main = ({ name, profiles }) => {
+  const [fetchedProfiles, setFetchedProfiles] = useState(
+    profiles.map((profile) => ({ ...profile, favorite: false }))
+  );
   const [searchTerm, setSearchTerm] = useState('');
   const [sortOrder, setSortOrder] = useState('ascending');
   const [selectedProfile, setSelectedProfile] = useState(null);
 
-  const filteredProfiles = profiles.filter(
+  const filteredProfiles = fetchedProfiles.filter(
     (profile) =>
       profile.name &&
       profile.name.toLowerCase().trim().includes(searchTerm.toLowerCase())
@@ -32,6 +35,11 @@ export const Main = ({ name, profiles }) => {
 
   const handleCardClick = (profile) => {
     setSelectedProfile(profile);
+    const updatedProfiles = fetchedProfiles.map((p) =>
+      p.id === profile.id ? { ...p, favorite: true } : p
+    );
+    setFetchedProfiles(updatedProfiles);
+    console.log(fetchedProfiles);
   };
 
   return (
@@ -66,8 +74,7 @@ export const Main = ({ name, profiles }) => {
           ))
         )}
       </ul>
-      {selectedProfile && <BusinessCardDetailed {...selectedProfile} />}{' '}
-      {/* displaying it here for now */}
+      {selectedProfile && <BusinessCardDetailed {...selectedProfile} />}
     </main>
   );
 };
