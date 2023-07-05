@@ -11,12 +11,12 @@ const BusinessCardDetailed = ({ profiles }) => {
   return (
     <div className="business-card">
       <div className="image-container">
-        <img src={photo} alt="Profile" />
+        <img src={photo ? photo : '/default-no-photo.jpg'} alt="Profile" />
       </div>
       <div className="info-container">
-        <h2>{name}</h2>
-        <p>Email: {email}</p>
-        <p>Tel: {tel}</p>
+        <h2>{name ? name : 'Not Specified'}</h2>
+        <p>Email: {email ? email : 'Not Specified'}</p>
+        <p>Tel: {tel ? tel : 'Not Specified'}</p>
       </div>
     </div>
   );
