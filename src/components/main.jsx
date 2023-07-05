@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Hello } from './hello';
 import { BusinessCard } from './BusinessCard';
-import BusinessCardDetailed from './BusinessCardDetailed';
 import isEqual from 'lodash/isEqual';
+import { Link } from 'react-router-dom';
 
 export const Main = ({ name, profiles }) => {
   const [fetchedProfiles, setFetchedProfiles] = useState(
@@ -42,6 +42,7 @@ export const Main = ({ name, profiles }) => {
     );
     setFetchedProfiles(updatedProfiles);
   };
+
   const handleShowFavorites = () => {
     setShowFavorites(!showFavorites);
   };
@@ -76,18 +77,19 @@ export const Main = ({ name, profiles }) => {
             <li key={index} onClick={() => handleCardClick(profile)}>
               {((profile.favorite === true && showFavorites) ||
                 !showFavorites) && (
-                <BusinessCard
-                  name={profile.name}
-                  email={profile.email}
-                  tel={profile.tel}
-                  photo={profile.photo}
-                />
+                <Link to={`/profile/${profile.id}`}>
+                  <BusinessCard
+                    name={profile.name}
+                    email={profile.email}
+                    tel={profile.tel}
+                    photo={profile.photo}
+                  />
+                </Link>
               )}
             </li>
           ))
         )}
       </ul>
-      {selectedProfile && <BusinessCardDetailed {...selectedProfile} />}
     </main>
   );
 };
