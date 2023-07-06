@@ -9,6 +9,7 @@ import { Nav } from './components/nav';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { About } from './pages/about';
 import { Contact } from './pages/contact';
+import BusinessCardDetailed from './components/BusinessCardDetailed';
 
 function App() {
   const appName = Data().name;
@@ -25,6 +26,10 @@ function App() {
             />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
+            <Route
+              path="/profile/:id"
+              element={<BusinessCardDetailed profiles={Profiles} />}
+            />
           </Routes>
         </div>
         <Footer />
