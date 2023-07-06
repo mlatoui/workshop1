@@ -8,8 +8,8 @@ export const Main = ({ name, profiles }) => {
   const [fetchedProfiles, setFetchedProfiles] = useState(
     profiles.map((profile) => ({ ...profile, favorite: false }))
   );
-  const [searchTerm, setSearchTerm] = useState('');
-  const [sortOrder, setSortOrder] = useState('ascending');
+  const [searchTerm, setSearchTerm] = useState("");
+  const [sortOrder, setSortOrder] = useState("ascending");
   const [selectedProfile, setSelectedProfile] = useState(null);
   const [showFavorites, setShowFavorites] = useState(false);
 
@@ -22,7 +22,7 @@ export const Main = ({ name, profiles }) => {
   const sortedProfiles = filteredProfiles.sort((a, b) => {
     const nameAsc = a.name.toLowerCase();
     const nameDesc = b.name.toLowerCase();
-    return sortOrder === 'ascending'
+    return sortOrder === "ascending"
       ? nameAsc.localeCompare(nameDesc)
       : nameDesc.localeCompare(nameAsc);
   });
