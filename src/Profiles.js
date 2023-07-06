@@ -1,4 +1,4 @@
-export const Profiles = [
+const Profiles = [
   {
     id: 1,
     name: 'Person One',
@@ -38,3 +38,5 @@ export const Profiles = [
     photo: '/providedpicture.jpg',
   },
 ];
+
+module.exports = Profiles;

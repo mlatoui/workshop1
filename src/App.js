@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import Data from './components/data';
-import { Profiles } from './Profiles';
+import Profiles from './Profiles';
 import { Footer } from './components/footer';
 import { Header } from './components/header';
 import { Main } from './components/main';
