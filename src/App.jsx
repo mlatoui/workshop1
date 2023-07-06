@@ -1,7 +1,6 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
 import Data from './components/data';
-import Profiles from './Profiles';
 import { Footer } from './components/footer';
 import { Header } from './components/header';
 import { Main } from './components/main';
@@ -13,6 +12,15 @@ import BusinessCardDetailed from './components/BusinessCardDetailed';
 
 function App() {
   const appName = Data().name;
+  const [profiles, setProfiles] = useState([]);
+
+  useEffect(() => {
+    fetch('http://localhost:3001/api/profiles')
+      .then((response) => response.json())
+      .then((data) => setProfiles(data))
+      .catch((error) => console.error(error));
+  }, []);
+
   return (
     <Router>
       <div className="App">
@@ -22,13 +30,13 @@ function App() {
           <Routes>
             <Route
               path="/"
-              element={<Main name={appName} profiles={Profiles} />}
+              element={<Main name={appName} profiles={profiles} />}
             />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
             <Route
               path="/profile/:id"
-              element={<BusinessCardDetailed profiles={Profiles} />}
+              element={<BusinessCardDetailed profiles={profiles} />}
             />
           </Routes>
         </div>
