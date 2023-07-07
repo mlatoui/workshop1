@@ -1,13 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Hello } from './hello';
 import { BusinessCard } from './BusinessCard';
 import isEqual from 'lodash/isEqual';
 import { Link } from 'react-router-dom';
 
 export const Main = ({ name, profiles }) => {
-  const [fetchedProfiles, setFetchedProfiles] = useState(
-    profiles.map((profile) => ({ ...profile, favorite: false }))
-  );
+  const [fetchedProfiles, setFetchedProfiles] = useState([]);
+
+  useEffect(() => {
+    setFetchedProfiles(
+      profiles.map((profile) => ({ ...profile, favorite: false }))
+    );
+  }, [profiles]);
+
   const [searchTerm, setSearchTerm] = useState('');
   const [sortOrder, setSortOrder] = useState('ascending');
   const [selectedProfile, setSelectedProfile] = useState(null);
