@@ -78,8 +78,8 @@ export const Main = ({ name, profiles }) => {
         {sortedProfiles.length === 0 ? (
           <p>No matching profiles</p>
         ) : (
-          sortedProfiles.map((profile, index) => (
-            <li key={index} onClick={() => handleCardClick(profile)}>
+          sortedProfiles.map((profile) => (
+            <li key={profile.id} onClick={() => handleCardClick(profile)}>
               {((profile.favorite === true && showFavorites) ||
                 !showFavorites) && (
                 <div>
