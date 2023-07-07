@@ -19,7 +19,7 @@ export const Main = ({ name, profiles }) => {
       profile.name.toLowerCase().trim().includes(searchTerm.toLowerCase())
   );
 
-  const sortedProfiles = filteredProfiles.sort((a, b) => {
+  const sortedProfiles = [...filteredProfiles].sort((a, b) => {
     const nameAsc = a.name.toLowerCase();
     const nameDesc = b.name.toLowerCase();
     return sortOrder === 'ascending'
@@ -73,8 +73,8 @@ export const Main = ({ name, profiles }) => {
         {sortedProfiles.length === 0 ? (
           <p>No matching profiles</p>
         ) : (
-          sortedProfiles.map((profile, index) => (
-            <li key={index} onClick={() => handleCardClick(profile)}>
+          sortedProfiles.map((profile) => (
+            <li key={profile.id} onClick={() => handleCardClick(profile)}>
               {((profile.favorite === true && showFavorites) ||
                 !showFavorites) && (
                 <div>
